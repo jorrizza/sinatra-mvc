@@ -1,0 +1,6 @@
+<p>
+  Helaas kan de door u opgevraagde pagina niet gevonden worden.
+</p>
+<p>
+  U vroeg om <i><%=request.env['REQUEST_URI'].html %></i>, maar dit locatie wordt niet (meer) ondersteund.
+</p>

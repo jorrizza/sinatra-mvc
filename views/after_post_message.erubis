@@ -1,0 +1,15 @@
+<%
+{
+  :info => "apminfo",
+  :error => "apmerror"
+}.each do |type, css_class|
+  apm = after_post_message type
+  if apm.length > 0
+    apm.each do |message|
+      %><div class="<%=css_class %>">
+        <%= message %>
+      </div><%
+    end
+  end
+end
+%>

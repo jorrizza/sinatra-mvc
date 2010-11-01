@@ -1,0 +1,15 @@
+Sinatra-MVC is a minimal attempt to make an MVC
+app out of Sinatra
+
+Following gems are used in production:
+thin
+sinatra
+uuidtools
+erubis
+dm-core
+dm-types
+dm-validations
+dm-migrations
+dm-is-tree
+dm-mysql-adapter (or which ever you like)
+tilt
