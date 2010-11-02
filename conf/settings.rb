@@ -12,4 +12,4 @@ set :translations, File.join(File.dirname(__FILE__), '..', 'i18n')
 # The database connection. See DataMapper.setup docs for details.
 # Since Sinatra settings are only available in request context,
 # we have to define a global here. Eww.
-$database_connection = 'mysql://user:pass@dbserver/database'
+$database_connection = 'mysql://sinatra:sinatra@localhost/sinatra_mvc'

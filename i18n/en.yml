@@ -1,0 +1,4 @@
+---
+errors: !!markdown
+  pagenotfound: This page at _%1_ can not be found.
+
