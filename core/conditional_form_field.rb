@@ -2,8 +2,8 @@
 
 helpers do
   def c(field)
-    if params.has_key? field
-      params[field].html
+    if params.has_key? field.to_s
+      params[field.to_s].html
     else
       ""
     end
