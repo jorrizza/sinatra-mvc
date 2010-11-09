@@ -40,7 +40,7 @@ helpers do
         field.gsub! /_id$/, ''
         error.each do |e|
           unless found_errors.include? [field, error]
-            after_post_message :error, t.field.capitalize + ': ' + e
+            after_post_message :error, t[the_class.inspect.downcase.to_sym][field.to_sym] + ': ' + e
             found_errors << [field, error]
           end
         end
