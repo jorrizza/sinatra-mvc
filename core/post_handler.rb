@@ -3,7 +3,9 @@
 
 helpers do
   # Create or modify a single object from POST data.
-  # We assume the programmer isn't stupid, and actually provided a DataMapper class or object.
+  # We assume the programmer isn't stupid, and actually provided a DataMapper class or object as the first argument.
+  # The second and third arguments supply a redirection mechanism on succes and failure. By default it's the
+  # referer. When nil, no redirection will take place.
   def post_object_single(input,
                          the_way_forward = request.env['HTTP_REFERER'],
                          the_way_back = request.env['HTTP_REFERER'])
@@ -21,7 +23,7 @@ helpers do
     # and call the setter for that field and redirect.
     params.each do |field, value|
       method = (field + '=').to_sym
-      if the_object.respond_to?
+      if the_object.respond_to? method
         the_object.send(method, value)
       end
     end
@@ -30,7 +32,7 @@ helpers do
     # at the way back location. We also make sure the same error doesn't show twice.
     if the_object.valid?
       the_object.save
-      redirect the_way_forward
+      redirect the_way_forward unless the_way_forward.nil?
     else
       found_errors = []
       the_object.errors.each_pair do |field, error|
@@ -43,7 +45,7 @@ helpers do
           end
         end
       end
-      redirect the_way_back
+      redirect the_way_back unless the_way_back.nil?
     end
   end
   
