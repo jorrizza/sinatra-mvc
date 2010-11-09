@@ -4,15 +4,13 @@ app out of Sinatra
 Following gems are used:
 thin
 sinatra
+sinatra-r18n
 tilt
 uuidtools
 erubis
-dm-core
-dm-types
-dm-validations
-dm-migrations
+data_mapper
 dm-mysql-adapter (or which ever you like)
 
 For markdown and textile support in i18n:
 maruku
-redcloth
+RedCloth
