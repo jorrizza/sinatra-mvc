@@ -2,7 +2,6 @@ require 'dm-core'
 require 'dm-types'
 require 'dm-validations'
 require 'dm-aggregates'
-require 'dm-constraints'
 
 # Add translations to models
 require 'r18n-core/translated'
