@@ -6,8 +6,9 @@ thin
 sinatra
 sinatra-r18n
 tilt
-uuidtools
+memcache-client
 erubis
+rack-flash
 data_mapper
 dm-mysql-adapter (or which ever you like)
 
