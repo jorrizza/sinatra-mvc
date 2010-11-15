@@ -1,4 +1,7 @@
+get '/flash' do
+  redirect '/', :error => ['Damn, something failed.', 'Gosh, something else failed as well.']
+end
+
 get '/' do
-  after_post_message :info, "APM Works Correctly!"
   erubis :index
 end

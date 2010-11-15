@@ -1,0 +1,19 @@
+<%
+{
+  :info => 'flashinfo',
+  :error => 'flasherror'
+}.each do |type, css_class|
+  messages = flash[type]
+  if messages.is_a? Array
+    messages.each do |message|
+      %><div class="<%=css_class %>">
+        <%= message.html %>
+      </div><%
+    end
+  elsif messages.is_a? String
+    %><div class="<%=css_class %>">
+      <%= messages.html %>
+    </div><%
+  end
+end
+%>

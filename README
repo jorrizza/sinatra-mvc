@@ -9,6 +9,7 @@ tilt
 memcache-client
 erubis
 rack-flash
+sinatra-redirect-with-flash
 data_mapper
 dm-mysql-adapter (or which ever you like)
 

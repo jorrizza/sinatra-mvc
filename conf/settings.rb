@@ -5,7 +5,7 @@ set :session_max_age, 86400
 set :session_backend, :memcache
 # The session store (String or array of strings for memcache servers)
 # Ignored for cookie cache.
-set :session_store, 'localhot:11211'
+set :session_store, 'localhost:11211'
 
 # Views
 # We need the default root to reconfigure :views in certain controllers.

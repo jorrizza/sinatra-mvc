@@ -9,7 +9,7 @@
 <meta name="robots" content="index,follow">
 </head>
 <body>
-<%= erubis :after_post_message, :layout => false %>
+<%= erubis :flash_message, :layout => false %>
 <%= yield %>
 </body>
 </html>
