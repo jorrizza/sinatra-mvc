@@ -34,19 +34,19 @@ helpers do
       the_object.save
       redirect the_way_forward unless the_way_forward.nil?
     else
-      flash_errors = []
+      flash[:error] = []
       found_errors = []
       the_object.errors.each_pair do |field, error|
         field = field.to_s
         field.gsub! /_id$/, ''
         error.each do |e|
           unless found_errors.include? [field, error]
-            flash_errors << t[the_class.inspect.downcase.to_sym][field.to_sym] + ': ' + e
+            flash[:error] << t[the_class.inspect.downcase.to_sym][field.to_sym] + ': ' + e
             found_errors << [field, error]
           end
         end
       end
-      redirect the_way_back, :error => flash_errors unless the_way_back.nil?
+      redirect the_way_back unless the_way_back.nil?
     end
   end
   
