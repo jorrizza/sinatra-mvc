@@ -1,18 +1,8 @@
-Sinatra-MVC is a minimal attempt to make an MVC
-app out of Sinatra
+Sinatra MVC
+===========
 
-Following gems are used:
-thin
-sinatra
-sinatra-r18n
-tilt
-memcache-client
-erubis
-rack-flash
-sinatra-redirect-with-flash
-data_mapper
-dm-mysql-adapter (or which ever you like)
+Sinatra MVC is a simple attempt to get some kind of MVC structure on top
+of Sinatra, without losing much of the original Sinatra "feeling". It
+uses Datamapper for it's model layer and custom software for the other
+two.
 
-For markdown and textile support in i18n:
-maruku
-RedCloth
