@@ -1,1 +1,4 @@
-<h1>Index</h1>
+<div id="intro">
+  Welcome to your new Sinatra MVC application. I'm happy to tell you everything seems to work! The first thing you'll need to do is reading the docs. Here are the docs for you, parsed from Markdown by your very own application.
+</div>
+<%=markdown :docs %>

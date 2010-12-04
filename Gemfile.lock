@@ -67,13 +67,20 @@ GEM
     extlib (0.9.15)
     fastercsv (1.5.3)
     json_pure (1.4.6)
+    less (1.2.21)
+      mutter (>= 0.4.2)
+      treetop (>= 1.4.2)
+    liquid (2.2.2)
     maruku (0.6.0)
       syntax (>= 1.0.0)
     memcache-client (1.8.5)
+    mutter (0.5.3)
+    polyglot (0.3.1)
     r18n-core (0.4.8)
     rack (1.2.1)
     rack-flash (0.1.1)
       rack
+    rdiscount (1.6.5)
     sinatra (1.1.0)
       rack (~> 1.1)
       tilt (~> 1.1)
@@ -89,6 +96,8 @@ GEM
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
     tilt (1.1)
+    treetop (1.4.9)
+      polyglot (>= 0.3.1)
     uuidtools (2.1.1)
 
 PLATFORMS
@@ -101,9 +110,12 @@ DEPENDENCIES
   dm-postgres-adapter
   dm-sqlite-adapter
   erubis
+  less
+  liquid
   maruku
   memcache-client
   rack-flash
+  rdiscount
   sinatra (>= 1.1)
   sinatra-r18n
   sinatra-redirect-with-flash
