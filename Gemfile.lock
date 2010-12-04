@@ -1,0 +1,88 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    RedCloth (4.2.3)
+    abstract (1.0.0)
+    addressable (2.2.2)
+    daemons (1.1.0)
+    data_mapper (1.0.2)
+      dm-aggregates (= 1.0.2)
+      dm-constraints (= 1.0.2)
+      dm-core (= 1.0.2)
+      dm-migrations (= 1.0.2)
+      dm-serializer (= 1.0.2)
+      dm-timestamps (= 1.0.2)
+      dm-transactions (= 1.0.2)
+      dm-types (= 1.0.2)
+      dm-validations (= 1.0.2)
+    dm-aggregates (1.0.2)
+      dm-core (~> 1.0.2)
+    dm-constraints (1.0.2)
+      dm-core (~> 1.0.2)
+      dm-migrations (~> 1.0.2)
+    dm-core (1.0.2)
+      addressable (~> 2.2)
+      extlib (~> 0.9.15)
+    dm-migrations (1.0.2)
+      dm-core (~> 1.0.2)
+    dm-serializer (1.0.2)
+      dm-core (~> 1.0.2)
+      fastercsv (~> 1.5.3)
+      json_pure (~> 1.4)
+    dm-timestamps (1.0.2)
+      dm-core (~> 1.0.2)
+    dm-transactions (1.0.2)
+      dm-core (~> 1.0.2)
+    dm-types (1.0.2)
+      dm-core (~> 1.0.2)
+      fastercsv (~> 1.5.3)
+      json_pure (~> 1.4)
+      stringex (~> 1.1.0)
+      uuidtools (~> 2.1.1)
+    dm-validations (1.0.2)
+      dm-core (~> 1.0.2)
+    erubis (2.6.6)
+      abstract (>= 1.0.0)
+    eventmachine (0.12.10)
+    extlib (0.9.15)
+    fastercsv (1.5.3)
+    json_pure (1.4.6)
+    maruku (0.6.0)
+      syntax (>= 1.0.0)
+    memcache-client (1.8.5)
+    r18n-core (0.4.8)
+    rack (1.2.1)
+    rack-flash (0.1.1)
+      rack
+    sinatra (1.1.0)
+      rack (~> 1.1)
+      tilt (~> 1.1)
+    sinatra-r18n (0.4.8)
+      r18n-core (= 0.4.8)
+    sinatra-redirect-with-flash (0.1.2)
+      rack-flash (>= 0.1.1)
+      sinatra (>= 0.9.1)
+    stringex (1.1.0)
+    syntax (1.0.0)
+    thin (1.2.7)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
+    tilt (1.1)
+    uuidtools (2.1.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  RedCloth
+  data_mapper
+  erubis
+  maruku
+  memcache-client
+  rack-flash
+  sinatra (>= 1.1)
+  sinatra-r18n
+  sinatra-redirect-with-flash
+  thin
+  tilt

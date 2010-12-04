@@ -12,12 +12,15 @@ Encoding.default_external = 'UTF-8'
 # Project include path.
 $:.push File.dirname(__FILE__)
 
+# We use Bundler to manage deps.
+require 'bundler/setup'
+
 # Guess what. We need these.
 require 'rubygems'
 require 'sinatra'
 require 'erubis'
 
-# i18n using R18n
+# i18n using R18n.
 require 'sinatra/r18n'
 
 # Load all of the core modules, in order.

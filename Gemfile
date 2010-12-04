@@ -1,0 +1,12 @@
+source :rubygems
+gem 'sinatra', '>= 1.1'
+gem 'thin'
+gem 'sinatra-r18n'
+gem 'tilt'
+gem 'memcache-client'
+gem 'erubis'
+gem 'rack-flash'
+gem 'sinatra-redirect-with-flash'
+gem 'data_mapper'
+gem 'maruku'
+gem 'RedCloth'
