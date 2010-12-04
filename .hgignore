@@ -2,3 +2,7 @@
 syntax: glob
 
 *~
+vendor
+bin
+.bundle
+README.html
