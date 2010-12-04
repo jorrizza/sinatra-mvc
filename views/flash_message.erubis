@@ -7,12 +7,12 @@
   if messages.is_a? Array
     messages.each do |message|
       %><div class="<%=css_class %>">
-        <%= message.html %>
+        <%=h message %>
       </div><%
     end
   elsif messages.is_a? String
     %><div class="<%=css_class %>">
-      <%= messages.html %>
+      <%=h messages %>
     </div><%
   end
 end
