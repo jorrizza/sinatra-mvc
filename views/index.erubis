@@ -1,4 +1,7 @@
-<div id="intro">
-  Welcome to your new Sinatra MVC application. I'm happy to tell you everything seems to work! The first thing you'll need to do is reading the docs. Here are the docs for you, parsed from Markdown by your very own application.
+<div style="font-family:sans-serif; font-size:12pt;">
+  <img src="/__sinatra__/404.png" alt="Sinatra">
+  <div style="float:right; width: 500px; height: 80px; margin: 80px; background-color:#EEEEEE; padding:10px;">
+    Welcome to your new Sinatra MVC application. I'm happy to tell you everything seems to work! The first thing you'll need to do is reading the docs. Here are the docs for you, parsed from Markdown by your very own application.
+  </div>
+  <%=markdown :docs %>
 </div>
-<%=markdown :docs %>

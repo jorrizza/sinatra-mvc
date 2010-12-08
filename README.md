@@ -2,9 +2,12 @@ Sinatra MVC
 ===========
 
 Sinatra MVC is a simple attempt to get some kind of MVC structure on top
-of Sinatra, without losing much of the original Sinatra "feeling". It
+of Sinatra, without losing much of the original Sinatra _"feeling"_. It
 uses Datamapper for it's model layer and custom software for the other
 two.
+
+It's recommended to read the [Sinatra README][6] first before continuing
+with this document.
 
 A rule of thumb: In command line examples, a `$` prefix means your own
 user and a `#` prefix is a root terminal.
@@ -88,7 +91,7 @@ Running your Application
 
 Sinatra is built on top of Rack, so every method that can run Rack will
 be able to run your Sinatra MVC application. That even includes things
-like Shotgun, Phusion Passenger and Heroku.
+like [Shotgun][2], [Phusion Passenger][3] and [Heroku][4].
 
 There are basically two ways to run your application. During development,
 it's okay to run your application using the built-in thin server. This
@@ -115,6 +118,49 @@ at `public/css/site/main.css`, the HTTP request to
 `/public/css/site/main.css` will serve that file. You're completely free
 to specify your own directory structure.
 
+Controllers
+-----------
+
+Controllers are vastly simplified and are not at all linked to models.
+If you want to make it so, you're free to do so. The controller files
+reside under `app/`. All of the files are read recursively during
+application startup. This means you can apply a sane directory structure
+to the app directory to make your controllers easier to understand. Since
+only the application's startup time is slightly influenced by the
+complexity of the directory structure and the amount of files in them,
+you're encouraged to split up your controllers as much as needed.
+
+The code that goes into these files ends up in Sinatra's [application
+scope][5]. You can fully use Sinatra's DSL to get things done. To keep
+the original Sinatra _vibe_ alive, there's no central routing method.
+Instead, you're required to use Sinatra's DSL to specify what happens
+after what request.
+
+Let's assume you've got a blog with posts, and you want to edit a certain
+post. In this case, you might choose for the following file:
+`app/post/modify.rb`
+
+    get '/post/modify/:id'
+      @post = Post.get id
+      halt 404 unless @post
+
+      erubis :post_modify
+    end
+
+    post '/post/modify/:id'
+      @post = Post.get id
+      halt 404 unless @post
+
+      post_object_single @post, '/post/read/' + id, nil
+
+      erubis :post_modify
+    end
+
+As you can see, not much has been changed from the original concept.
+The post itself is a Datamapper model, and is used a such.
+
+TODO
+
 Views
 -----
 
@@ -136,15 +182,11 @@ Some sidemarks with this selection of templating solutions:
 * You can use less, but not as a template call. Sinatra MVC wants to keep
   things speedy, so please use `bin/lessc` to compile your less templates.
 * Markdown support in R18n is done using Maruku, but Sinatra (tilt) prefers
-  rdiscount. Both are included.
+  rdiscount. Both are included. One of the future things that will be done
+  is removing one of the two. This will have to do for now.
 
 Models
 ------
-
-TODO
-
-Controllers
------------
 
 TODO
 
@@ -153,4 +195,14 @@ Internationalisation
 
 TODO
 
+Utilities
+---------
+
+TODO
+
 [1]: http://rubydoc.info/gems/sinatra/1.1.0/file/README.rdoc#Views___Templates
+[2]: http://rtomayko.github.com/shotgun/
+[3]: http://www.modrails.com/
+[4]: http://heroku.com/
+[5]: http://www.rubydoc.info/gems/sinatra/1.1.0/file/README.rdoc#Application_Class_Scope
+[6]: http://www.rubydoc.info/gems/sinatra/1.1.0/file/README.rdoc
