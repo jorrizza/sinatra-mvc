@@ -138,7 +138,7 @@ after what request.
 
 Let's assume you've got a blog with posts, and you want to edit a certain
 post. In this case, you might choose for the following file:
-`app/post/modify.rb`
+`app/post/modify.rb`.
 
     get '/post/modify/:id'
       @post = Post.get id
@@ -151,7 +151,7 @@ post. In this case, you might choose for the following file:
       @post = Post.get id
       halt 404 unless @post
 
-      post_object_single @post, '/post/read/' + id, nil
+      fetch 1, @post, '/post/read/' + id, nil
 
       erubis :post_modify
     end
@@ -159,7 +159,8 @@ post. In this case, you might choose for the following file:
 As you can see, not much has been changed from the original concept.
 The post itself is a Datamapper model, and is used a such.
 
-TODO
+In the post bit of the controller there's an awesome little function call,
+allowing you to populate your model with incoming POST data.
 
 Views
 -----
