@@ -86,6 +86,11 @@ updates from his repository, just pull (and merge if needed).
     $ hg pull
     $ hg merge
 
+Configuration
+-------------
+
+TODO
+
 Running your Application
 ------------------------
 
@@ -160,7 +165,53 @@ As you can see, not much has been changed from the original concept.
 The post itself is a Datamapper model, and is used a such.
 
 In the post bit of the controller there's an awesome little function call,
-allowing you to populate your model with incoming POST data.
+allowing you to populate your model with incoming POST data. The `fetch`
+function is designed to tackle most, but not all, handling of incoming
+request data. It's built on top op Datamapper and expects either an object
+or a class of a Datamapper model as it's second parameter. The spec:
+
+    fetch [1|n], [object|class], url_on_success = referer, url_on_failure = referer
+
+The first parameter (`1` or `n`) switches functionality between fetching
+a single object, or multiple objects of the same type. _Only single
+object fetching is supported for now_. The second argument accepts both
+classes and objects of Datamapper models. If it's a class, it will create
+a new object using the received values and saves it to the database. If it's
+an existing object, it will modify the object using the received fields.
+Be sure to have your form field name attributes match the Datamapper field
+names. If you have any other fields that end up in the `params` hash, make
+sure the fields do not overlap. Both URL filters (like `get '/my/:id' do
+... end`) and normal HTTP GET parameters (like `/my/?id=1`) interfere with
+the `params` variable `fetch` uses. Internally the function will handle
+Datamapper validation and will only write to the database when everything
+checks out. The errors will be displayed using flash messages after a 
+redirect. That's what the last two parameters are for. Both are optional.
+When excluded, they'll have the value of the current referer. The first
+is the redirect on success URL. This will keep the back button from
+resending the POST data. The second one is the redirect on failure URL.
+When nil is given, no redirection will take place and control will be given
+back to the controller, allowing you to have the conditional form fields
+(`c` function) in your view display the sent data.
+
+The flash messages aren't only available to the `fetch` function, but
+you're allowed to set them yourself as well. There are two methods of using
+the flash messages. You can alter the `flash` variable itself. The variable
+is a hash with two possible fields. `:info` contains information, in either
+and array or a string. `:error` contains the same, but for errors. If you
+set the flash message, the first view that is rendered will display the
+values. Take a look at `views/flash_message.erubis` for the markup. The
+second method uses an extention to the `redirect` function, allowing you
+to supply a message to be displayed after a redirect. Example:
+
+    redirect '/naked/horses', :info => 'Stand the f*ck back!'
+
+Or more messages:
+
+    redirect '/naked/penguins', :info => ['This is unfunny', 'This kind of turns me on']
+
+Or several types:
+
+    redirect '/naked/cows', :flash => {:info => 'Horny, get it?', :error => 'Not funny!'}
 
 Views
 -----
@@ -186,7 +237,48 @@ Some sidemarks with this selection of templating solutions:
   rdiscount. Both are included. One of the future things that will be done
   is removing one of the two. This will have to do for now.
 
-TODO
+Normally, you have to do weird stuff in Sinatra like using `:'directory/
+my_view.erubis'` for rendering views in sub directories. Sinatra MVC has
+added automatic view prefixes. The former method of using hardcoded
+prefixes still works, but now there's URI-based mapping as well. In short,
+it uses the views from the directory path in the view directory if that
+path matches the URI prefix. For example, if you have a controller like
+this:
+
+    get '/my/little/pony/pink'
+      erubis :pink
+    end
+
+It will render a page using `views/my/little/pony/pink.erubis`, but only
+if that directory exists. This directory will be used as the new view
+prefix, so make sure every directory has at least the following files:
+
+* `layout.erubis`
+* `not_found.erubis`
+* `flash_message.erubis` (only if layout requires it)
+
+This construction allows you to create prefix-based sub sites, each with
+it's own look and feel. Originally this has been created to allow for
+admin areas and the like.
+
+Views have a neat little function for displaying form values. It's called
+conditional form field (`c` for short). The `c` function will take two
+parameters, here's the spec:
+
+   c field, object = nil
+
+The field is a symbol of the field from your Datamapper model. This
+function will check if your field is found in POST data, and will display
+that value. If it's not, it will return an empty string. Unless you've
+supplied the second parameter, which is a Datamapper object. If the
+object contains a value for that field, that will be displayed in stead
+of an empty string. Here's a practical example for the `c` function for
+handling a post's content.
+
+    <td><textarea name="content"><%=c :content, @post %></textarea></td>
+
+The `c` function will automatically call `h` when creating output. The
+`h` function escapes HTML, just like in Rails.
 
 Models
 ------
@@ -202,6 +294,16 @@ Utilities
 ---------
 
 TODO
+
+Single Character Reserved Variables
+-----------------------------------
+
+Just don't use these as variables within controllers and views, mkay?
+
+* `h - ` HTML escaping function.
+* `t - ` Translation function (R18n).
+* `c - ` Conditional form field.
+* `n - ` Just meaning "n" of something.
 
 [1]: http://rubydoc.info/gems/sinatra/1.1.0/file/README.rdoc#Views___Templates
 [2]: http://rtomayko.github.com/shotgun/
