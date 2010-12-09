@@ -4,9 +4,9 @@
 helpers do
   def c(field, object = nil)
     if params.has_key? field.to_s
-      params[field.to_s].html
+      h params[field.to_s]
     elsif object.respond_to? field
-      object.send(field).html
+      h object.send(field)
     else
       ""
     end
