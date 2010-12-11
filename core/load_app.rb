@@ -3,16 +3,8 @@
 # the controllers (app components if you will).
 
 def load_app(dir)
-  Dir.new(dir).each do |file|
-    unless ['.', '..'].include? file
-      this_file = dir + '/' + file
-
-      if File.directory? this_file
-        load_app this_file
-      elsif File.extname(this_file) == '.rb'
-        load this_file
-      end
-    end
+  Dir.glob(File.join dir, '**', '*.rb').each do |file|
+    load file
   end
 end
 
