@@ -89,7 +89,43 @@ updates from his repository, just pull (and merge if needed).
 Configuration
 -------------
 
-TODO
+The main configuration is defined in `conf/settings.rb`. It's the place
+where you can use the Sinatra `set` method to change Sinatra's behaviour.
+Nothing keeps you from setting configuration parameters in controllers,
+but please keep things nicely tucked away in this file.
+
+For sessions there are three configuration parameters you can set. The
+`:session_max_age` determines the age of the session cookie in seconds.
+After this amount of time, the cookie is denied and browsers should
+automatically discard it. There are two session backends you can choose
+from. If you set `:session_backend` to `:cookie`, all the session values
+will be stored in the cookie itself. Even though it will be encrypted,
+this is not a very safe thing to do. It also limits your storage to the
+maximum allowed cookie size, which varies from browser to browser. The
+preferred setting is `:memcache`, which will use memcache as a session
+backend. It doesn't limit your session size that much, and can scale
+pretty well. Set the `:session_store` to either a string or an array of
+strings for a single server or a memcached cluster. The format is
+`hostname:port`. This value will be ignored for the `:cookie`
+`:session_backend` setting.
+
+If you want to change the path to the views root directory, you can change
+the `:views_root` setting. It's `./views` by default.
+
+For i18n you can set the default locale using `:default_locale`. This is
+the name of the file in the `:translations` directory, without the `.yml`
+file extension.
+
+The database connection is defined by the `$database_connection` global.
+It's a global because it's needed before request context, so before the
+Sinatra settings are initialized. Because of this the settings might be
+changed to yaml in the near future. The value is a string, following the
+syntax:
+
+* `'sqlite::memory:'` for in-memory Sqlite3 storage
+* `'sqlite:///path/to/file.db'` for file-based Sqlite3
+* `'mysql://user:pass@server/database'` for the MySQL RDBMS
+* `'postgres://user:pass@server/database'` for the PostgreSQL RDBMS
 
 Running your Application
 ------------------------
@@ -283,7 +319,39 @@ The `c` function will automatically call `h` when creating output. The
 Models
 ------
 
-TODO
+Sinatra MVC uses Datamapper for it's models. Just like the controllers, 
+the models are included recursively so you are allowed to create your own
+structure in the `models` directory.
+
+For documentation regarding Datamapper, please visit de [Datamapper
+documentation][7]. Some popular plugins are provided:
+
+* [dm-timestamps][8]: Add created/modified timestamps.
+* [dm-tags][9]: Add tags to any model.
+* [dm-is-tree][10]: Create a tree out of a model.
+* [dm-is-list][11]: Create a list of models.
+* [dm-types][12]: Allows the use of more field types.
+* [dm-aggregates][13]: Adds aggregation support (COUNT() and the like).
+* [dm-validations][14]: Adds validation. Used extensively.
+
+The classed defined in the models are automatically available in the
+controllers.
+
+When you've created your models, you can check and initialize them by
+running:
+
+    $ ./sinatra-mvc.rb initdb
+
+This will initialize your database, but beware, it'll purge every model
+defined in your `models` directory. If you just want to migrate your models
+(e.g. update the database to reflect your models), just run:
+
+    $ ./sinatra-mvc.rb upgradedb
+
+This will only update the tables in such a way it can't modify any of the
+data already present. To do that, you'll have to write migrations. This
+functionality is lacking at the moment. Datamapper is able to run migrations,
+but nobody bothered documenting how they work.
 
 Internationalisation
 --------------------
@@ -311,3 +379,11 @@ Just don't use these as variables within controllers and views, mkay?
 [4]: http://heroku.com/
 [5]: http://www.rubydoc.info/gems/sinatra/1.1.0/file/README.rdoc#Application_Class_Scope
 [6]: http://www.rubydoc.info/gems/sinatra/1.1.0/file/README.rdoc
+[7]: http://rubydoc.info/gems/dm-core/1.0.2/frames
+[8]: http://www.rubydoc.info/gems/dm-timestamps/1.0.2/frames
+[9]: http://www.rubydoc.info/gems/dm-tags/1.0.2/frames
+[10]: http://www.rubydoc.info/gems/dm-is-tree/1.0.2/frames
+[11]: http://www.rubydoc.info/gems/dm-is-list/1.0.2/frames
+[12]: http://www.rubydoc.info/gems/dm-types/1.0.2/frames
+[13]: http://www.rubydoc.info/gems/dm-aggregates/1.0.2/frames
+[14]: http://www.rubydoc.info/gems/dm-validations/1.0.2/frames
