@@ -131,10 +131,10 @@ of your project.
 The database connection is defined by `database_connection`.  The value is
 a string, following the syntax:
 
-* `'sqlite::memory:'` for in-memory Sqlite3 storage
-* `'sqlite:///path/to/file.db'` for file-based Sqlite3
-* `'mysql://user:pass@server/database'` for the MySQL RDBMS
-* `'postgres://user:pass@server/database'` for the PostgreSQL RDBMS
+* `sqlite::memory:` for in-memory Sqlite3 storage
+* `sqlite:///path/to/file.db` for file-based Sqlite3
+* `mysql://user:pass@server/database` for the MySQL RDBMS
+* `postgres://user:pass@server/database` for the PostgreSQL RDBMS
 
 You can read the settings file using the `Settings.settings` call, which
 will return a Hash of your settings. Alternatively you can read the
@@ -371,12 +371,23 @@ but nobody bothered documenting how they work.
 Internationalisation
 --------------------
 
-TODO
+Internationalisation is done using R18n. This method allows for neat
+integration into Sinatra. The documentation is complete and available on
+[their site][16].
 
 Utilities
 ---------
 
-TODO
+Utilities are scripts you can run within the Sinatra MVC environment. It's
+pretty much what Rails does using `rake`, but without the complexity. Just
+add a file in the `utils` directory and do whatever you want to do.
+You can use the database like you're used to. The utils are meant to
+function as cron jobs or management processes. As you can see, the database
+scripts are already provided.
+
+To run a script, simply call:
+
+    $ ./sinatra-mvc.rb <scriptname without .rb>
 
 Single Character Reserved Variables
 -----------------------------------
@@ -403,3 +414,4 @@ Just don't use these as variables within controllers and views, mkay?
 [13]: http://www.rubydoc.info/gems/dm-aggregates/1.0.2/frames
 [14]: http://www.rubydoc.info/gems/dm-validations/1.0.2/frames
 [15]: http://www.sinatrarb.com/configuration.html
+[16]: http://r18n.rubyforge.org/sinatra.html
