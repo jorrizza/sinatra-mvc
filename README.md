@@ -89,43 +89,58 @@ updates from his repository, just pull (and merge if needed).
 Configuration
 -------------
 
-The main configuration is defined in `conf/settings.rb`. It's the place
+The main configuration is defined in `conf/settings.yml`. It's the place
 where you can use the Sinatra `set` method to change Sinatra's behaviour.
 Nothing keeps you from setting configuration parameters in controllers,
-but please keep things nicely tucked away in this file.
+but please keep things nicely tucked away in this file. Every field will
+be translated to a `set :fied, value` call.
 
 For sessions there are three configuration parameters you can set. The
-`:session_max_age` determines the age of the session cookie in seconds.
+`session_max_age` determines the age of the session cookie in seconds.
 After this amount of time, the cookie is denied and browsers should
 automatically discard it. There are two session backends you can choose
-from. If you set `:session_backend` to `:cookie`, all the session values
+from. If you set `session_backend` to `:cookie`, all the session values
 will be stored in the cookie itself. Even though it will be encrypted,
 this is not a very safe thing to do. It also limits your storage to the
 maximum allowed cookie size, which varies from browser to browser. The
 preferred setting is `:memcache`, which will use memcache as a session
 backend. It doesn't limit your session size that much, and can scale
-pretty well. Set the `:session_store` to either a string or an array of
+pretty well. Set the `session_store` to either a string or an array of
 strings for a single server or a memcached cluster. The format is
 `hostname:port`. This value will be ignored for the `:cookie`
-`:session_backend` setting.
+`session_backend` setting. So for a single memcache server you define:
+
+    session_store: hostname:11211
+
+And for a memcache cluster:
+
+    session_store:
+      - hostname1:11211
+      - hostname2:11211
+      - hostname3:11211
 
 If you want to change the path to the views root directory, you can change
-the `:views_root` setting. It's `./views` by default.
+the `views_root` setting. It's `views` by default. This is interpreted as
+a subdirectory of your project.
 
-For i18n you can set the default locale using `:default_locale`. This is
-the name of the file in the `:translations` directory, without the `.yml`
-file extension.
+For i18n you can set the default locale using `default_locale`. This is
+the name of the file in the `translations` directory, without the `.yml`
+file extension. Just like `views_root`, `translations` is a subdirectory
+of your project.
 
-The database connection is defined by the `$database_connection` global.
-It's a global because it's needed before request context, so before the
-Sinatra settings are initialized. Because of this the settings might be
-changed to yaml in the near future. The value is a string, following the
-syntax:
+The database connection is defined by `database_connection`.  The value is
+a string, following the syntax:
 
 * `'sqlite::memory:'` for in-memory Sqlite3 storage
 * `'sqlite:///path/to/file.db'` for file-based Sqlite3
 * `'mysql://user:pass@server/database'` for the MySQL RDBMS
 * `'postgres://user:pass@server/database'` for the PostgreSQL RDBMS
+
+You can read the settings file using the `Settings.settings` call, which
+will return a Hash of your settings. Alternatively you can read the
+configuration Sinatra received by using the `settings` object like explained
+in the [Sinatra settings documentation][15]. These two differ slightly,
+mainly in the fact that Sinatra isn't aware of the project directory.
 
 Running your Application
 ------------------------
@@ -387,3 +402,4 @@ Just don't use these as variables within controllers and views, mkay?
 [12]: http://www.rubydoc.info/gems/dm-types/1.0.2/frames
 [13]: http://www.rubydoc.info/gems/dm-aggregates/1.0.2/frames
 [14]: http://www.rubydoc.info/gems/dm-validations/1.0.2/frames
+[15]: http://www.sinatrarb.com/configuration.html

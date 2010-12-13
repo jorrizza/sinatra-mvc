@@ -17,4 +17,4 @@ if development?
 end
 
 # Set up our database connection.
-DataMapper.setup :default, $database_connection
+DataMapper.setup :default, Settings.settings['database_connection']

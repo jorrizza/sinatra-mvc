@@ -24,7 +24,7 @@ require 'erubis'
 require 'sinatra/r18n'
 
 # Load all of the core modules, in order.
-require 'conf/settings'
+require 'core/settings'
 require 'core/view_prefix'
 require 'core/render_params'
 require 'core/database_connection'

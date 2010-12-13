@@ -1,0 +1,15 @@
+---
+# Sessions
+session_max_age: 86400
+session_backend: :memcache
+session_store: localhost:11211
+
+# Views
+views_root: views
+
+# i18n
+default_locale: en
+translations: i18n
+
+# Database
+database_connection: mysql://sinatra:sinatra@localhost/sinatra_mvc
