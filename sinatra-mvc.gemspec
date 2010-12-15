@@ -9,5 +9,5 @@ spec = Gem::Specification.new do |s|
   s.bindir = 'bin'
   s.executables = ['sinatra-mvc']
   s.default_executable = 'sinatra-mvc'
-  .add_dependency('bundler',  '~> 1.0')
+  s.add_dependency('bundler',  '~> 1.0')
 end
