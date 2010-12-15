@@ -1,5 +1,3 @@
-#!/usr/bin/env ruby1.9.1
-#
 # Sinatra MVC Web Application
 # Based on Sinatra and Common Sense (tm)
 # 
@@ -24,14 +22,14 @@ require 'erubis'
 require 'sinatra/r18n'
 
 # Load all of the core modules, in order.
-require 'core/settings'
-require 'core/view_prefix'
-require 'core/render_params'
-require 'core/database_connection'
-require 'core/session_store'
-require 'core/flash_messages'
-require 'core/post_handler'
-require 'core/load_app'
-require 'core/load_utils'
-require 'core/conditional_form_field'
-require 'core/escaping'
+require 'sinatra-mvc/settings'
+require 'sinatra-mvc/view_prefix'
+require 'sinatra-mvc/render_params'
+require 'sinatra-mvc/database_connection'
+require 'sinatra-mvc/session_store'
+require 'sinatra-mvc/flash_messages'
+require 'sinatra-mvc/post_handler'
+require 'sinatra-mvc/load_app'
+require 'sinatra-mvc/load_utils'
+require 'sinatra-mvc/conditional_form_field'
+require 'sinatra-mvc/escaping'
