@@ -5,7 +5,7 @@
 # http://www.jrrzz.net/
 
 # Check if we've got a PROJECT defined.
-raise RuntimeError, 'PROJECT is not defined!' unless PROJECT
+raise RuntimeError, 'PROJECT is not defined!' unless defined? PROJECT
 
 # A hack for now, but at least it's better than nothing.
 Encoding.default_external = 'UTF-8'

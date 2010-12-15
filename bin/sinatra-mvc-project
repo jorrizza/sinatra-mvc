@@ -12,7 +12,7 @@ end
 skel = File.join File.dirname(Gem.bin_path('sinatra-mvc')), '..', 'skel'
 
 begin
-  FileUtils.cp_r skel, ARGV[0], :verbose => true
+  FileUtils.cp_r skel, ARGV[0]
 rescue
   $stderr.puts $!
   exit 1
