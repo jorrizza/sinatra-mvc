@@ -16,13 +16,13 @@ class Settings
   end
 end
 
-Settings.load File.join(File.dirname(__FILE__), '..', 'conf', 'settings.yml')
+Settings.load File.join(PROJECT, 'conf', 'settings.yml')
 
 # Now we have to feed the Sinatra settings
 Settings.settings.each_pair do |setting, value|
   case setting
   when 'views_root', 'translations'
-    set setting.to_sym, File.join(File.dirname(__FILE__), '..', value)
+    set setting.to_sym, File.join(PROJECT, value)
   else
     set setting.to_sym, value
   end

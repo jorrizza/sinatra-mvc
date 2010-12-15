@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby1.9.1
+# Creates a new project.
+
+require 'fileutils'
+require 'rubygems'
+
+unless ARGV[0]
+  $stderr.puts 'Please supply the name of the new project'
+  exit 1
+end
+
+skel = File.join File.dirname(Gem.bin_path('sinatra-mvc')), '..', 'skel'
+
+begin
+  FileUtils.cp_r skel, ARGV[0], :verbose => true
+rescue
+  $stderr.puts $!
+  exit 1
+end
+
+puts "Finished. Finalize the project by running the following command in %s:" % ARGV[0]
+puts "bundle install --path vendor --binstubs"

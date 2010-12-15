@@ -30,7 +30,7 @@ The framework has been developed on a Debian Sid platform, and as such
 Debian is the preferred platform of choice. If you encounter problems
 caused by Debian-specific hacks, please let me know. The interpreter
 string has been set to `ruby1.9.1`, but you can easily change that in
-`sinatra-mvc.rb` if you wish. Don't worry, that's the only place the 
+the `bin` directory  if you wish. Don't worry, that's the only place the 
 "weird" interpreter string is used.
 
 Throughout the documentation Debian-specific help will be provided. Other
@@ -47,7 +47,6 @@ For Debian users, the following command will suffice (or ask your system
 administrator to install the packages for you):
 
     # apt-get install ruby1.9.1-full libmysqlclient-dev libpq-dev libsqlite3-dev
-    # gem1.9.1 install bundler
 
 You'll have to make sure the Ruby gem path is in your terminal's `$PATH`.
 For Debian, adding the following line to your `~/.bashrc` will do just
@@ -57,23 +56,28 @@ fine. Don't forget to restart your shell to enable this!
 
 First, you'll need to download the source tree. Since this is a
 development project, you'll have to use the latest and greatest release
-(e.g. the Mercurial tip) for the time being.
+(e.g. the Mercurial tip) for the time being. For Debian, use `gem1.9.1`
+instead of `gem`.
 
-    $ hg clone ssh://gescheurd.wasda.nl/~jorrizza/src/sinatra-mvc my_project
+    $ cd $HOME/src
+    $ hg clone ssh://gescheurd.wasda.nl/~jorrizza/src/sinatra-mvc
+    $ cd sinatra-mvc
+    $ gem build sinatra-mvc.gemspec
+    # gem install sinatra-mvc-0.1.gem
+
+Now we've got sinatra-mvc installed, let's start our own project.
+
+    $ cd $HOME/src
+    $ sinatra-mvc-project my_project
     $ cd my_project
+
+Yay! A project!
 
 Using bundler, we can install all of our gems without getting in the way
 of your host Ruby installation. The following command will install the
 gems in the `vendor/` directory and add the gem's applications in `bin/`.
 
     $ bundle install --path vendor --binstubs
-
-To test your local bunch of gems, let's generate an HTML file out of this
-documentation.
-
-    $ bin/maruku README.md
-
-This'll generate a nice HTML file for you.
 
 Updating gems is pretty easily done. Now you've got your bundle complete,
 you'll just have to run:
@@ -83,8 +87,11 @@ you'll just have to run:
 Joris will update Sinatra MVC every once in a while. To get the latest
 updates from his repository, just pull (and merge if needed).
 
+    $ cd $HOME/src/sinatra-mvc
     $ hg pull
-    $ hg merge
+    $ hg update
+    $ gem build sinatra-mvc.gemspec
+    # gem install sinatra-mvc-0.1.gem
 
 Configuration
 -------------
@@ -154,7 +161,8 @@ it's okay to run your application using the built-in thin server. This
 will serve all the static files and handle the application calls at the
 same time. Just simply run:
 
-    $ ./sinatra-mvc.rb
+    $ cd my_project
+    $ sinatra-mvc
 
 This will run your application in development mode, allowing you to see
 the access log in the terminal and tracebacks when you've made an _oops_.
@@ -361,7 +369,8 @@ This will initialize your database, but beware, it'll purge every model
 defined in your `models` directory. If you just want to migrate your models
 (e.g. update the database to reflect your models), just run:
 
-    $ ./sinatra-mvc.rb upgradedb
+    $ cd my_project
+    $ sinatra-mvc upgradedb
 
 This will only update the tables in such a way it can't modify any of the
 data already present. To do that, you'll have to write migrations. This
@@ -387,7 +396,8 @@ scripts are already provided.
 
 To run a script, simply call:
 
-    $ ./sinatra-mvc.rb <scriptname without .rb>
+    $ cd my_project
+    $ sinatra-mvc <scriptname without .rb>
 
 Single Character Reserved Variables
 -----------------------------------

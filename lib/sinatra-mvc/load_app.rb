@@ -3,7 +3,7 @@
 # the controllers (app components if you will).
 
 def load_app(dir)
-  Dir.glob(File.join dir, '**', '*.rb').each do |file|
+  Dir.glob(File.join PROJECT, dir, '**', '*.rb').each do |file|
     load file
   end
 end

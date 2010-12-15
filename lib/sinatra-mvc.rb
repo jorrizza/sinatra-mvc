@@ -3,12 +3,15 @@
 # 
 # Joris van Rooij <jorrizza@jrrzz.net>
 # http://www.jrrzz.net/
-#
 
+# Check if we've got a PROJECT defined.
+raise RuntimeError, 'PROJECT is not defined!' unless PROJECT
+
+# A hack for now, but at least it's better than nothing.
 Encoding.default_external = 'UTF-8'
 
 # Project include path.
-$:.push File.dirname(__FILE__)
+$:.push PROJECT
 
 # We use Bundler to manage deps.
 require 'bundler/setup'
@@ -33,3 +36,6 @@ require 'sinatra-mvc/load_app'
 require 'sinatra-mvc/load_utils'
 require 'sinatra-mvc/conditional_form_field'
 require 'sinatra-mvc/escaping'
+
+# Start the classic mode.
+set :run, true

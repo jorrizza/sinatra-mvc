@@ -2,9 +2,10 @@
 # when that utility is called as a command line option.
 
 if ARGV[0]
-  if File.exists? "utils/#{ARGV[0]}.rb"
+  util = File.join(PROJECT, 'utils', "#{ARGV[0]}.rb")
+  if File.exists? util
     printf "Running util %s.\n", ARGV[0]
-    require "utils/#{ARGV[0]}"
+    require util
     exit
   else
     printf ">> Util %s does not exist. Continue as normal.\n", ARGV[0]
