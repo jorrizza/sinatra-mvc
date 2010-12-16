@@ -46,7 +46,7 @@ a terminal.
 For Debian users, the following command will suffice (or ask your system
 administrator to install the packages for you):
 
-    # apt-get install ruby1.9.1-full libmysqlclient-dev libpq-dev libsqlite3-dev
+    # apt-get install ruby1.9.1-full libmysqlclient-dev libpq-dev libsqlite3-dev build-essential
 
 You'll have to make sure the Ruby gem path is in your terminal's `$PATH`.
 For Debian, adding the following line to your `~/.bashrc` will do just
