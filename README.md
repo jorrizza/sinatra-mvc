@@ -191,6 +191,11 @@ An example using Shotgun:
     # gem1.9.1 install shotgun
     $ shotgun ~/src/my_project/config.ru
 
+Or:
+
+    $ cd ~/src/my_project
+    $ shotgun
+
 Static Files
 ------------
 
