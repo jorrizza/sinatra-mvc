@@ -3,4 +3,6 @@
 # Determine the location of our project
 PROJECT = ENV['PROJECT'] ? ENV['PROJECT'] : '.'
 
-require 'sinatra-mvc'
+Dir.chdir PROJECT do
+  require 'sinatra-mvc'
+end
