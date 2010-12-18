@@ -195,7 +195,7 @@ Controllers
 
 Controllers are vastly simplified and are not at all linked to models.
 If you want to make it so, you're free to do so. The controller files
-reside under `app/`. All of the files are read recursively during
+reside under `app/`. All of the files are read recursively in order during
 application startup. This means you can apply a sane directory structure
 to the app directory to make your controllers easier to understand. Since
 only the application's startup time is slightly influenced by the
