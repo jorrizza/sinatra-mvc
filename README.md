@@ -73,16 +73,24 @@ Now we've got sinatra-mvc installed, let's start our own project.
 
 Yay! A project!
 
-Using bundler, we can install all of our gems without getting in the way
-of your host Ruby installation. The following command will install the
-gems in the `vendor/` directory and add the gem's applications in `bin/`.
-
-    $ bundle install --path vendor --binstubs
+Using bundler, we can install all of our gems without getting in the way of
+your host Ruby installation. The `sinatra-mvc-project` utility has already
+installed the bundler files in your project with the default set of gems.
 
 Updating gems is pretty easily done. Now you've got your bundle complete,
 you'll just have to run:
 
     $ bundle update
+
+When you need more gems to be added to your project, simply edit the
+`Gemfile` and run
+
+    $ bundle update
+
+again. This will make sure the dependencies of your application, as supplied
+in the `Gemfile`, will be available to your project. For further
+documentation about the `Gemfile`, read the [Bundler documentation about
+the `Gemfile`][17]
 
 Joris will update Sinatra MVC every once in a while. To get the latest
 updates from his repository, just pull (and merge if needed).
@@ -279,26 +287,23 @@ Sinatra MVC has all the [view options][1] Sinatra has. Some things differ
 though, since this framework supports an URL-directory mapping for views.
 
 Using _erubis_ is recommended, but you might as well use other templating
-methods. At the moment the following things are supported (notice the lack
-of the nasties _builder_, _haml_ and _sass_):
-
-* erubis
-* markdown
-* textile
-* liquid
-* less
+methods. Any template method supported by the tilt library, included by
+Sinatra, can be used. Just make sure you've added the library to the
+`Gemfile` and included it in the `conf/environment.rb`.
 
 Some sidemarks with this selection of templating solutions:
 
-* You can use less, but not as a template call. Sinatra MVC wants to keep
-  things speedy, so please use `bin/lessc` to compile your less templates.
+* You can use less. Sinatra MVC wants to keep things speedy, so please use
+  `bin/lessc` to compile your less templates. Unless you've got a proper
+  cache of course.
 * Markdown support in R18n is done using Maruku, but Sinatra (tilt) prefers
-  rdiscount. Both are included. One of the future things that will be done
-  is removing one of the two. This will have to do for now.
+  rdiscount. Both are included in the default `Gemfile`. One of the future
+  things that will be done is removing one of the two. This will have to do
+  for now.
 
-Normally, you have to do weird stuff in Sinatra like using `:'directory/
-my_view.erubis'` for rendering views in sub directories. Sinatra MVC has
-added automatic view prefixes. The former method of using hardcoded
+Normally, you have to do weird stuff in Sinatra like using
+`:'directory/my_view.erubis'` for rendering views in sub directories. Sinatra
+MVC has added automatic view prefixes. The former method of using hardcoded
 prefixes still works, but now there's URI-based mapping as well. In short,
 it uses the views from the directory path in the view directory if that
 path matches the URI prefix. For example, if you have a controller like
@@ -324,7 +329,7 @@ Views have a neat little function for displaying form values. It's called
 conditional form field (`c` for short). The `c` function will take two
 parameters, here's the spec:
 
-   c field, object = nil
+    c field, object = nil
 
 The field is a symbol of the field from your Datamapper model. This
 function will check if your field is found in POST data, and will display
@@ -349,13 +354,11 @@ structure in the `models` directory.
 For documentation regarding Datamapper, please visit de [Datamapper
 documentation][7]. Some popular plugins are provided:
 
-* [dm-timestamps][8]: Add created/modified timestamps.
-* [dm-tags][9]: Add tags to any model.
-* [dm-is-tree][10]: Create a tree out of a model.
-* [dm-is-list][11]: Create a list of models.
-* [dm-types][12]: Allows the use of more field types.
 * [dm-aggregates][13]: Adds aggregation support (COUNT() and the like).
 * [dm-validations][14]: Adds validation. Used extensively.
+
+If you want to add more `dm-*` modules, just add them to your `Gemfile`
+and include them in the `conf/environment.rb` file.
 
 The classed defined in the models are automatically available in the
 controllers.
@@ -363,7 +366,8 @@ controllers.
 When you've created your models, you can check and initialize them by
 running:
 
-    $ ./sinatra-mvc.rb initdb
+    $ cd my_project
+    $ sinatra-mvc initdb
 
 This will initialize your database, but beware, it'll purge every model
 defined in your `models` directory. If you just want to migrate your models
@@ -416,12 +420,8 @@ Just don't use these as variables within controllers and views, mkay?
 [5]: http://www.rubydoc.info/gems/sinatra/1.1.0/file/README.rdoc#Application_Class_Scope
 [6]: http://www.rubydoc.info/gems/sinatra/1.1.0/file/README.rdoc
 [7]: http://rubydoc.info/gems/dm-core/1.0.2/frames
-[8]: http://www.rubydoc.info/gems/dm-timestamps/1.0.2/frames
-[9]: http://www.rubydoc.info/gems/dm-tags/1.0.2/frames
-[10]: http://www.rubydoc.info/gems/dm-is-tree/1.0.2/frames
-[11]: http://www.rubydoc.info/gems/dm-is-list/1.0.2/frames
-[12]: http://www.rubydoc.info/gems/dm-types/1.0.2/frames
 [13]: http://www.rubydoc.info/gems/dm-aggregates/1.0.2/frames
 [14]: http://www.rubydoc.info/gems/dm-validations/1.0.2/frames
 [15]: http://www.sinatrarb.com/configuration.html
 [16]: http://r18n.rubyforge.org/sinatra.html
+[17]: http://gembundler.com/man/gemfile.5.html

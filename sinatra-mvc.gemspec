@@ -10,6 +10,19 @@ spec = Gem::Specification.new do |s|
   s.executables = %w[sinatra-mvc sinatra-mvc-project]
   s.default_executable = 'sinatra-mvc'
   s.add_dependency('bundler',  '~> 1.0')
+  s.add_dependency('sinatra', '>= 1.1')
+  s.add_dependency('tilt')
+  s.add_dependency('sinatra-r18n')
+  s.add_dependency('rack-flash')
+  s.add_dependency('sinatra-redirect-with-flash')
+  s.add_dependency('erubis')
+  s.add_dependency('dm-core')
+  s.add_dependency('dm-types')
+  s.add_dependency('dm-validations')
+  s.add_dependency('dm-mysql-adapter')
+  s.add_dependency('dm-postgres-adapter')
+  s.add_dependency('dm-sqlite-adapter')
+  s.add_dependency('memcache-client')
 
   s.files = %w[
   bin
@@ -36,6 +49,7 @@ spec = Gem::Specification.new do |s|
   skel/i18n/en.yml
   skel/conf
   skel/conf/settings.yml
+  skel/conf/environment.rb
   skel/views
   skel/views/docs.md
   skel/views/layout.erubis
@@ -47,7 +61,9 @@ spec = Gem::Specification.new do |s|
   skel/utils/initdb.rb
   skel/config.ru
   skel/models
+  skel/models/.dir
   skel/public
+  skel/public/.dir
   skel/Gemfile
   LICENSE
   README.md

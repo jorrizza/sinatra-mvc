@@ -13,10 +13,12 @@ skel = File.join File.dirname(Gem.bin_path('sinatra-mvc')), '..', 'skel'
 
 begin
   FileUtils.cp_r skel, ARGV[0]
+  Dir.chdir ARGV[0] do
+    system 'bundle install --path vendor --binstubs'
+  end
 rescue
   $stderr.puts $!
   exit 1
 end
 
-puts "Finished. Finalize the project by running the following command in %s:" % ARGV[0]
-puts "bundle install --path vendor --binstubs"
+puts "Finished. Your project is located in %s." % File.expand_path(ARGV[0])

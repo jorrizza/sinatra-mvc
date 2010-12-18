@@ -1,11 +1,6 @@
 require 'dm-core'
 require 'dm-types'
 require 'dm-validations'
-require 'dm-aggregates'
-require 'dm-tags'
-require 'dm-timestamps'
-require 'dm-is-tree'
-require 'dm-is-list'
 
 # Add translations to models
 require 'r18n-core/translated'

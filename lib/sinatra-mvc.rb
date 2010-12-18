@@ -13,9 +13,6 @@ Encoding.default_external = 'UTF-8'
 # Project include path.
 $:.push PROJECT
 
-# We use Bundler to manage deps.
-require 'bundler/setup'
-
 # Guess what. We need these.
 require 'rubygems'
 require 'sinatra'
@@ -32,10 +29,16 @@ require 'sinatra-mvc/database_connection'
 require 'sinatra-mvc/session_store'
 require 'sinatra-mvc/flash_messages'
 require 'sinatra-mvc/post_handler'
-require 'sinatra-mvc/load_app'
-require 'sinatra-mvc/load_utils'
 require 'sinatra-mvc/conditional_form_field'
 require 'sinatra-mvc/escaping'
+
+# We use Bundler to manage the rest of the deps.
+require 'bundler/setup'
+
+# Load the application.
+require 'conf/environment'
+require 'sinatra-mvc/load_app'
+require 'sinatra-mvc/load_utils'
 
 # Start the classic mode.
 set :run, true

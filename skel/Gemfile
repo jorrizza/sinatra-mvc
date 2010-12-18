@@ -1,22 +1,16 @@
 source :rubygems
-gem 'sinatra', '>= 1.1'
+
+# A faster web server.
 gem 'thin'
-gem 'sinatra-r18n'
-gem 'tilt'
-gem 'memcache-client'
-gem 'erubis'
+
+# Markdown rendering support for R18n and Tilt.
 gem 'rdiscount'
-gem 'rack-flash'
-gem 'sinatra-redirect-with-flash'
-gem 'data_mapper'
-gem 'dm-mysql-adapter'
-gem 'dm-postgres-adapter'
-gem 'dm-sqlite-adapter'
-gem 'dm-timestamps'
-gem 'dm-tags'
-gem 'dm-is-tree'
-gem 'dm-is-list'
 gem 'maruku'
-gem 'RedCloth'
-gem 'liquid'
-gem 'less'
+
+# Datamapper is nowhere without this.
+gem 'dm-aggregates'
+
+# Some often used template utilities. Add/enable at will.
+# gem 'RedCloth'
+# gem 'liquid'
+# gem 'less'
