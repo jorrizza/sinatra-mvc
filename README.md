@@ -60,7 +60,7 @@ development project, you'll have to use the latest and greatest release
 instead of `gem`.
 
     $ cd $HOME/src
-    $ hg clone https://jorrizza@bitbucket.org/jorrizza/sinatra-mvc
+    $ hg clone https://bitbucket.org/jorrizza/sinatra-mvc
     - or if you prefer github -
     $ git clone git://github.com/jorrizza/sinatra-mvc.git
     $ cd sinatra-mvc
