@@ -61,6 +61,8 @@ instead of `gem`.
 
     $ cd $HOME/src
     $ hg clone ssh://gescheurd.wasda.nl/~jorrizza/src/sinatra-mvc
+    - or if using github when you're not a developer -
+    $ git clone git://github.com/jorrizza/sinatra-mvc.git
     $ cd sinatra-mvc
     $ gem build sinatra-mvc.gemspec
     # gem install sinatra-mvc-0.1.gem
@@ -98,6 +100,8 @@ updates from his repository, just pull (and merge if needed).
     $ cd $HOME/src/sinatra-mvc
     $ hg pull
     $ hg update
+    - or when using github -
+    $ git pull
     $ gem build sinatra-mvc.gemspec
     # gem install sinatra-mvc-0.1.gem
 

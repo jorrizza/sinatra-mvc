@@ -6,6 +6,7 @@ spec = Gem::Specification.new do |s|
   s.description = 'A custom MVC stack that tries to keep the lightweight Sinatra feeling, while adding structure to an already awesome workflow.'
   s.author = 'Joris van Rooij'
   s.email = 'jorrizza@jrrzz.net'
+  s.homepage = 'http://www.jrrzz.net/sinatra-mvc/'
   s.bindir = 'bin'
   s.executables = %w[sinatra-mvc sinatra-mvc-project]
   s.default_executable = 'sinatra-mvc'
