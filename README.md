@@ -375,6 +375,7 @@ structure in the `models` directory.
 For documentation regarding Datamapper, please visit de [Datamapper
 documentation][7]. Some popular plugins are provided:
 
+* [dm-migrations][12]: Adds migration support. Used by provided utils.
 * [dm-aggregates][13]: Adds aggregation support (COUNT() and the like).
 * [dm-validations][14]: Adds validation. Used extensively.
 
@@ -441,6 +442,7 @@ Just don't use these as variables within controllers and views, mkay?
 [5]: http://www.rubydoc.info/gems/sinatra/1.1.0/file/README.rdoc#Application_Class_Scope
 [6]: http://www.rubydoc.info/gems/sinatra/1.1.0/file/README.rdoc
 [7]: http://rubydoc.info/gems/dm-core/1.0.2/frames
+[12]: http://www.rubydoc.info/gems/dm-migrations/1.0.2/frames
 [13]: http://www.rubydoc.info/gems/dm-aggregates/1.0.2/frames
 [14]: http://www.rubydoc.info/gems/dm-validations/1.0.2/frames
 [15]: http://www.sinatrarb.com/configuration.html
