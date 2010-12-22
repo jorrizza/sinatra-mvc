@@ -1,5 +1,4 @@
 # Initializes the database if asked to.
-require 'dm-migrations'
 
 # Are you sure?
 print "\nWarning, this will DESTROY EVERYTHING YOU HAVE!\nAnd probably more...\n\nAre you sure? (y/N)"
