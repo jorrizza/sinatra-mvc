@@ -43,6 +43,8 @@ spec = Gem::Specification.new do |s|
   lib/sinatra-mvc/conditional_form_field.rb
   lib/sinatra-mvc.rb
   skel
+  skel/.hgignore
+  skel/.gitignore
   skel/app
   skel/app/not_found.rb
   skel/app/index.rb
