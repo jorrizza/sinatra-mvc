@@ -65,7 +65,7 @@ instead of `gem`.
     $ git clone git://github.com/jorrizza/sinatra-mvc.git
     $ cd sinatra-mvc
     $ gem build sinatra-mvc.gemspec
-    # gem install sinatra-mvc-0.1.gem
+    # gem install sinatra-mvc-0.0.1.gem
 
 Now we've got sinatra-mvc installed, let's start our own project.
 
