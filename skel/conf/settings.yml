@@ -7,6 +7,9 @@ session_store: localhost:11211
 # Views
 views_root: views
 
+# Public directory
+public: public
+
 # i18n
 default_locale: en
 translations: i18n

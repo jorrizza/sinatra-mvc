@@ -142,6 +142,9 @@ If you want to change the path to the views root directory, you can change
 the `views_root` setting. It's `views` by default. This is interpreted as
 a subdirectory of your project.
 
+The same applies to the `public` setting, which should point to the
+directory within your project from which static content is being served.
+
 For i18n you can set the default locale using `default_locale`. This is
 the name of the file in the `translations` directory, without the `.yml`
 file extension. Just like `views_root`, `translations` is a subdirectory
@@ -203,8 +206,8 @@ Or:
 Static Files
 ------------
 
-Static files are served from the `public/` directory. If you create a file
-at `public/css/site/main.css`, the HTTP request to 
+By default, static files are served from the `public/` directory. If you
+create a file at `public/css/site/main.css`, the HTTP request to 
 `/public/css/site/main.css` will serve that file. You're completely free
 to specify your own directory structure.
 
