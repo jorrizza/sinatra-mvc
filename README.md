@@ -54,18 +54,23 @@ fine. Don't forget to restart your shell to enable this!
 
     PATH="/var/lib/gems/1.9.1/bin/:$PATH"
 
-First, you'll need to download the source tree. Since this is a
-development project, you'll have to use the latest and greatest release
-(e.g. the Mercurial tip) for the time being. For Debian, use `gem1.9.1`
-instead of `gem`.
+The simplest method is using Rubygems. For Debian, use `gem1.9.1` instead
+of `gem`.
+
+    # gem install sinatra-mvc
+
+Or for the latest and greatest, you can need to download the source tree.
+It's available on both [Github][8] and [Bitbucket][9], but both are only
+mirrors of the development tree at wasda.nl.
 
     $ cd $HOME/src
     $ hg clone https://bitbucket.org/jorrizza/sinatra-mvc
     - or if you prefer github -
     $ git clone git://github.com/jorrizza/sinatra-mvc.git
     $ cd sinatra-mvc
+    $ rm sinatra-mvc-*.gem
     $ gem build sinatra-mvc.gemspec
-    # gem install sinatra-mvc-0.0.1.gem
+    # gem install sinatra-mvc-*.gem
 
 Now we've got sinatra-mvc installed, let's start our own project.
 
@@ -94,8 +99,14 @@ in the `Gemfile`, will be available to your project. For further
 documentation about the `Gemfile`, read the [Bundler documentation about
 the `Gemfile`][17]
 
-Joris will update Sinatra MVC every once in a while. To get the latest
-updates from his repository, just pull (and merge if needed).
+Updating
+________
+
+For a Rubygems installation simply run:
+
+    # gem update
+
+To get the latest updates from the repository, just pull (and merge if needed).
 
     $ cd $HOME/src/sinatra-mvc
     $ hg pull
@@ -103,7 +114,7 @@ updates from his repository, just pull (and merge if needed).
     - or when using github -
     $ git pull
     $ gem build sinatra-mvc.gemspec
-    # gem install sinatra-mvc-0.1.gem
+    # gem install sinatra-mvc-0.0.1.gem
 
 Configuration
 -------------
@@ -112,7 +123,7 @@ The main configuration is defined in `conf/settings.yml`. It's the place
 where you can use the Sinatra `set` method to change Sinatra's behaviour.
 Nothing keeps you from setting configuration parameters in controllers,
 but please keep things nicely tucked away in this file. Every field will
-be translated to a `set :fied, value` call.
+be translated to a `set :field, value` call.
 
 For sessions there are three configuration parameters you can set. The
 `session_max_age` determines the age of the session cookie in seconds.
@@ -442,6 +453,8 @@ Just don't use these as variables within controllers and views, mkay?
 [5]: http://www.rubydoc.info/gems/sinatra/1.1.0/file/README.rdoc#Application_Class_Scope
 [6]: http://www.rubydoc.info/gems/sinatra/1.1.0/file/README.rdoc
 [7]: http://rubydoc.info/gems/dm-core/1.0.2/frames
+[8]: https://github.com/jorrizza/sinatra-mvc
+[9]: https://bitbucket.org/jorrizza/sinatra-mvc
 [12]: http://www.rubydoc.info/gems/dm-migrations/1.0.2/frames
 [13]: http://www.rubydoc.info/gems/dm-aggregates/1.0.2/frames
 [14]: http://www.rubydoc.info/gems/dm-validations/1.0.2/frames
