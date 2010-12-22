@@ -8,6 +8,7 @@ gem 'rdiscount'
 gem 'maruku'
 
 # Datamapper is nowhere without this.
+gem 'dm-migrations'
 gem 'dm-aggregates'
 
 # Some often used template utilities. Add/enable at will.

@@ -3,6 +3,7 @@
 
 # Datamapper Modules
 require 'dm-aggregates'
+require 'dm-migrations'
 
 # Templating Engines
 #require 'redcloth'
