@@ -100,7 +100,7 @@ documentation about the `Gemfile`, read the [Bundler documentation about
 the `Gemfile`][17]
 
 Updating
-________
+--------
 
 For a Rubygems installation simply run:
 
