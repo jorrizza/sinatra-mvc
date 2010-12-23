@@ -114,7 +114,7 @@ To get the latest updates from the repository, just pull (and merge if needed).
     - or when using github -
     $ git pull
     $ gem build sinatra-mvc.gemspec
-    # gem install sinatra-mvc-0.0.1.gem
+    # gem install sinatra-mvc-*.gem
 
 Configuration
 -------------
