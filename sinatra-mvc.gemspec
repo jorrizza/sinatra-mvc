@@ -1,6 +1,6 @@
 spec = Gem::Specification.new do |s|
   s.name = 'sinatra-mvc'
-  s.version = '0.0.1'
+  s.version = '0.0.2'
   s.summary = 'MVC stack on top of Sinatra'
   s.platform = Gem::Platform::RUBY
   s.description = 'A custom MVC stack that tries to keep the lightweight Sinatra feeling, while adding structure to an already awesome workflow.'
