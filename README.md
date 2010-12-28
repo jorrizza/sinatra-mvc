@@ -68,7 +68,6 @@ mirrors of the development tree at wasda.nl.
     - or if you prefer github -
     $ git clone git://github.com/jorrizza/sinatra-mvc.git
     $ cd sinatra-mvc
-    $ rm sinatra-mvc-*.gem
     $ gem build sinatra-mvc.gemspec
     # gem install sinatra-mvc-*.gem
 
@@ -135,6 +134,7 @@ To get the latest updates from the repository, just pull (and merge if needed).
     $ hg update
     - or when using github -
     $ git pull
+    $ rm sinatra-mvc-*.gem
     $ gem build sinatra-mvc.gemspec
     # gem install sinatra-mvc-*.gem
 
