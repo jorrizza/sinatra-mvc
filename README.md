@@ -99,6 +99,28 @@ in the `Gemfile`, will be available to your project. For further
 documentation about the `Gemfile`, read the [Bundler documentation about
 the `Gemfile`][17]
 
+Sharing your project with others
+--------------------------------
+
+The project is prepared for use in Git and Mercurial. It's recommended to
+make a repository of your project directory right from the get-go.
+
+For example, when using Mercurial:
+
+    $ cd $HOME/src/my_project
+    $ hg init
+    $ hg add * .gitignore .hgignore
+    $ hg commit -m "First commit."
+
+When your friend clones your repository, the Bundler cache is not included.
+The Bundler installer has to be re-run for a clone of your project.
+
+Again, an example using Mercurial:
+
+    $ hg clone ~jameshacker/src/my_project $HOME/src/my_project
+    $ cd $HOME/src/my_project
+    $ bundle install --path vendor --binstubs
+
 Updating
 --------
 
