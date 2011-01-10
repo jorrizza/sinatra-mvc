@@ -12,6 +12,10 @@ with this document.
 A rule of thumb: In command line examples, a `$` prefix means your own
 user and a `#` prefix is a root terminal.
 
+A big fat warning: Sinatra MVC < 0.1.0 is not fit for production. The API
+_will_ change with almost _every_ release during sub-0.1.0 development.
+Feel free to play around with it, though.
+
 System Dependencies
 -------------------
 

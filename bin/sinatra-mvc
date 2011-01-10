@@ -5,4 +5,6 @@ PROJECT = ENV['PROJECT'] ? ENV['PROJECT'] : '.'
 
 Dir.chdir PROJECT do
   require 'sinatra-mvc'
+
+  SinatraMVC.run!
 end

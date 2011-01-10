@@ -15,14 +15,14 @@ $:.push PROJECT
 
 # Guess what. We need these.
 require 'rubygems'
-require 'sinatra'
 require 'erubis'
-
-# i18n using R18n.
-require 'sinatra/r18n'
+require 'sinatra/base'
 
 # Load all of the core modules, in order.
+require 'sinatra-mvc/base'
+require 'sinatra-mvc/i18n'
 require 'sinatra-mvc/settings'
+require 'sinatra-mvc/environment_helpers'
 require 'sinatra-mvc/view_prefix'
 require 'sinatra-mvc/render_params'
 require 'sinatra-mvc/database_connection'
@@ -39,6 +39,3 @@ require 'bundler/setup'
 require 'conf/environment'
 require 'sinatra-mvc/load_app'
 require 'sinatra-mvc/load_utils'
-
-# Start the classic mode.
-set :run, true
