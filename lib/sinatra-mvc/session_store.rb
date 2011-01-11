@@ -1,7 +1,6 @@
-# Sessions for Sinatra
-# Both cookie based as Memcache based sessions are supported
-
 class SinatraMVC
+  # Sessions for Sinatra
+  # Both cookie based as Memcache based sessions are supported
   case settings.session_backend
   when :cookie
     secret = (0..50).map do

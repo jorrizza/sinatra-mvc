@@ -1,8 +1,7 @@
-# This will enable neat parameters like Rails and PHP have.
-# You know, the variable[key] things.
-# From the Sinatra book.
-
 class SinatraMVC
+  # This will enable neat parameters like Rails and PHP have.
+  # You know, the variable[key] things.
+  # From the Sinatra book.
   before do
     new_params = {}
     params.each_pair do |full_key, value|

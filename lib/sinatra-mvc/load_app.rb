@@ -9,6 +9,7 @@ class SinatraMVC
   # our developers and don't require them to open the class in every
   # app file.
   Dir.glob(File.join PROJECT, 'app', '**', '*.rb').sort.each do |file|
+    # TODO I'm sure we can think of a better way to do this.
     self.class_eval File.new(file).read, file
   end
 

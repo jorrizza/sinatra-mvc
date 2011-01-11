@@ -1,7 +1,6 @@
-# Utility functions to handle POST data.
-# TODO: Write post_object_multi for field[] input fields
-
 class SinatraMVC
+  # Utility functions to handle POST data.
+  # TODO: Write post_object_multi for field[] input fields
   helpers do
     # Makes fetch more readable
     def n

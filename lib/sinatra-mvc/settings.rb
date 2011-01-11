@@ -3,12 +3,12 @@
 require 'psych'
 
 class SinatraMVC
-
   # The settings loading class. It pretty much takes care of loading
   # the settings from your project's settings.yml file.
   class Settings
 
     # Loads the settings file and populates the Settings class.
+    # Later, these settings will be passed into Sinatra's set().
     def self.load(filename)
       begin
         @@settings = Psych.load_file filename
@@ -18,6 +18,7 @@ class SinatraMVC
     end
 
     # Public class attr_reader of the settings.
+    # It's just the output of Psych.load_file, really.
     def self.settings
       @@settings
     end
