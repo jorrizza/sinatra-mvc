@@ -20,9 +20,6 @@ spec = Gem::Specification.new do |s|
   s.add_dependency('dm-core')
   s.add_dependency('dm-types')
   s.add_dependency('dm-validations')
-  s.add_dependency('dm-mysql-adapter')
-  s.add_dependency('dm-postgres-adapter')
-  s.add_dependency('dm-sqlite-adapter')
   s.add_dependency('memcache-client')
 
   s.files = %w[

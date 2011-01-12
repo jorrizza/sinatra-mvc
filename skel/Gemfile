@@ -11,6 +11,11 @@ gem 'maruku'
 gem 'dm-migrations'
 gem 'dm-aggregates'
 
+# Datamapper connection methods.
+gem 'dm-mysql-adapter'
+#gem 'dm-postgres-adapter'
+#gem 'dm-sqlite-adapter'
+
 # Some often used template utilities. Add/enable at will.
 gem 'erubis'
 # gem 'RedCloth'

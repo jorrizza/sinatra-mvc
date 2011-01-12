@@ -21,11 +21,8 @@ System Dependencies
 
 Your system needs to have a working Ruby 1.9.2 installation (or later,
 but I haven't tested that). You'll also need some kind of database. The
-currently supported databases are:
-
-* MySQL
-* PostgreSQL
-* Sqlite3
+currently supported databases are all of the database backends
+[supported][10] by DataMapper.
 
 Sinatra MVC also has the possibility to use Memcache as a session storage
 system. This is the default. It's recommended as well.
@@ -481,6 +478,7 @@ Just don't use these as variables within controllers and views, mkay?
 [7]: http://rubydoc.info/gems/dm-core/1.0.2/frames
 [8]: https://github.com/jorrizza/sinatra-mvc
 [9]: https://bitbucket.org/jorrizza/sinatra-mvc
+[10]: https://github.com/search?langOverride=&q=dm+adapter&repo=&start_value=1&type=Repositories
 [12]: http://www.rubydoc.info/gems/dm-migrations/1.0.2/frames
 [13]: http://www.rubydoc.info/gems/dm-aggregates/1.0.2/frames
 [14]: http://www.rubydoc.info/gems/dm-validations/1.0.2/frames
