@@ -12,6 +12,7 @@ gem 'dm-migrations'
 gem 'dm-aggregates'
 
 # Some often used template utilities. Add/enable at will.
+gem 'erubis'
 # gem 'RedCloth'
 # gem 'liquid'
 # gem 'less'

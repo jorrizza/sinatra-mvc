@@ -15,7 +15,6 @@ $:.push PROJECT
 
 # Guess what. We need these.
 require 'rubygems'
-require 'erubis'
 require 'sinatra/base'
 
 # Load all of the core modules, in order.

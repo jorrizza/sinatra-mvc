@@ -6,5 +6,6 @@ require 'dm-aggregates'
 require 'dm-migrations'
 
 # Templating Engines
+require 'erubis'
 #require 'redcloth'
 #require 'liquid'
