@@ -184,6 +184,11 @@ the name of the file in the `translations` directory, without the `.yml`
 file extension. Just like `views_root`, `translations` is a subdirectory
 of your project.
 
+The development server socket can be configured using the `port` and `bind`
+options. These determine the TCP port and the listen address of the
+development server. These will be ignored when you're using the rackup file
+to run your server (i.e. any other method than running `sinatra-mvc`).
+
 The database connection is defined by `database_connection`.  The value is
 a string, following the syntax:
 
