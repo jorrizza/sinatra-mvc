@@ -474,12 +474,12 @@ Just don't use these as variables within controllers and views, mkay?
 * `c - ` Conditional form field.
 * `n - ` Just meaning "n" of something.
 
-[1]: http://www.sinatrarb.com/intro
+[1]: http://www.sinatrarb.com/intro#Views%20/%20Templates
 [2]: http://rtomayko.github.com/shotgun/
 [3]: http://www.modrails.com/
 [4]: http://heroku.com/
-[5]: http://www.rubydoc.info/gems/sinatra/1.1.0/file/README.rdoc#Application_Class_Scope
-[6]: http://www.rubydoc.info/gems/sinatra/1.1.0/file/README.rdoc
+[5]: http://www.sinatrarb.com/intro#Application/Class%20Scope
+[6]: http://www.sinatrarb.com/intro
 [7]: http://rubydoc.info/gems/dm-core/1.0.2/frames
 [8]: https://github.com/jorrizza/sinatra-mvc
 [9]: https://bitbucket.org/jorrizza/sinatra-mvc
