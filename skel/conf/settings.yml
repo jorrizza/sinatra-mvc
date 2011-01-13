@@ -14,5 +14,9 @@ public: public
 default_locale: en
 translations: i18n
 
+# Default server config. Not used when using the Rackup file.
+port: 4567
+bind: 0.0.0.0
+
 # Database
 database_connection: mysql://sinatra:sinatra@localhost/sinatra_mvc
