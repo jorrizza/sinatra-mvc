@@ -5,8 +5,8 @@ if ENV['RACK_ENV'] == 'test' && !defined? RACKUP
   require 'test/unit'
   require 'rack/test'
 
-  # A general test case class for SinatraMVC.
   class SinatraMVC
+    # A general test case class for SinatraMVC.
     class UnitTest < Test::Unit::TestCase
       include Rack::Test::Methods
       
