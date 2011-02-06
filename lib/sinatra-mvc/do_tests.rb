@@ -6,17 +6,19 @@ if ENV['RACK_ENV'] == 'test' && !defined? RACKUP
   require 'rack/test'
 
   # A general test case class for SinatraMVC.
-  class SinatraMVCUnitTest < Test::Unit::TestCase
-    include Rack::Test::Methods
-
-    def app
-      SinatraMVC
+  class SinatraMVC
+    class UnitTest < Test::Unit::TestCase
+      include Rack::Test::Methods
+      
+      def app
+        ::SinatraMVC
+      end
     end
   end
 
   # Add every test defined in our project to the unit test.
   SinatraMVC.tests.each do |t|
-    SinatraMVCUnitTest.class_exec &t
+    SinatraMVC::UnitTest.class_exec &t
   end
 
   # Because test/unit is just a MiniTest shell, we can cheat a bit
