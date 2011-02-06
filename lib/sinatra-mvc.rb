@@ -13,8 +13,7 @@ Encoding.default_external = 'UTF-8'
 # Project include path.
 $:.push PROJECT
 
-# Guess what. We need these.
-require 'rubygems'
+# Guess what. We need this.
 require 'sinatra/base'
 
 # Load all of the core modules, in order.
@@ -29,6 +28,7 @@ require 'sinatra-mvc/flash_messages'
 require 'sinatra-mvc/post_handler'
 require 'sinatra-mvc/conditional_form_field'
 require 'sinatra-mvc/escaping'
+require 'sinatra-mvc/testing'
 
 # We use Bundler to manage the rest of the deps.
 require 'bundler/setup'
@@ -37,4 +37,5 @@ require 'bundler/setup'
 require 'conf/environment'
 require 'sinatra-mvc/database_connection'
 require 'sinatra-mvc/load_app'
+require 'sinatra-mvc/do_tests'
 require 'sinatra-mvc/load_utils'

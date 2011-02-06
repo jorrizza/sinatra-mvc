@@ -7,5 +7,6 @@ require 'dm-migrations'
 
 # Templating Engines
 require 'erubis'
+#require 'rdiscount'
 #require 'redcloth'
 #require 'liquid'

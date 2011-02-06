@@ -5,7 +5,7 @@ class SinatraMVC
   # mode, in which set() could be called in the request scope.
   before do |obj|
     obj.class.class_exec request do |request|
-      first_dir = request.env['REQUEST_URI'].split('/')[1]
+      first_dir = request.path_info.split('/')[1]
 
       if first_dir
         if File.directory? File.join(settings.views_root, first_dir)

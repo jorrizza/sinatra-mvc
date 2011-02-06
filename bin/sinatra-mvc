@@ -3,6 +3,10 @@
 # Determine the location of our project
 PROJECT = ENV['PROJECT'] ? ENV['PROJECT'] : '.'
 
+# We have to make sure the environment variable RACK_ENV is set
+# to "test" when we're actually testing.
+ENV['RACK_ENV'] = 'test' if ARGV[0] == 'test'
+
 Dir.chdir PROJECT do
   require 'sinatra-mvc'
 

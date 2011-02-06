@@ -21,3 +21,6 @@ gem 'erubis'
 # gem 'RedCloth'
 # gem 'liquid'
 # gem 'less'
+
+# When testing, uncomment this.
+# gem 'rack-test'
