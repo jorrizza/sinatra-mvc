@@ -14,12 +14,6 @@ if ENV['RACK_ENV'] == 'test' && !defined? RACKUP
     end
   end
 
-  p = Proc.new do
-    def test_if_it_works
-      get '/'
-      assert last_response.ok?
-    end
-  end
   # Add every test defined in our project to the unit test.
   SinatraMVC.tests.each do |t|
     SinatraMVCUnitTest.class_exec &t
