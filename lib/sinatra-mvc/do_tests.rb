@@ -24,6 +24,23 @@ if ENV['RACK_ENV'] == 'test' && !defined? RACKUP
   # Because test/unit is just a MiniTest shell, we can cheat a bit
   # here to start the tests.
   MiniTest::Unit.new.run(ARGV)
+
+  # Print out the test coverage.
+  verbose = ARGV.include? '--verbose'
+  number_of_calls = 0
+  number_of_tests = 0
+  puts "\n>> Verbose test coverage:" if verbose
+  SinatraMVC.test_coverage.each do |method, calls|
+    puts "  #{method.to_s.upcase}" if verbose && calls.count > 0
+    calls.keys.sort.each do |call|
+      test_written = calls[call]
+      number_of_calls += 1
+      number_of_tests += 1 if test_written
+
+      puts "    #{call}: #{test_written ? 'Yes' : 'No'}" if verbose
+    end
+  end
+  puts ">> Test coverage: #{number_of_tests}/#{number_of_calls}"
   
   # We don't want to start the server, now do we?
   puts '>> Done testing'
