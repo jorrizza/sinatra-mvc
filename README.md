@@ -40,7 +40,7 @@ operating systems might be added later.
 Installing
 ----------
 
-Installing Sinatra MVC is reasonably simple. All you need is Mercurial,
+Installing Sinatra MVC is reasonably simple. All you need is Ruby Gems,
 some development headers (distributed by your operating system) and
 a terminal.
 
@@ -128,7 +128,8 @@ For a Rubygems installation simply run:
 
     # gem update
 
-To get the latest updates from the repository, just pull (and merge if needed).
+To get the latest updates from the repository, just pull (and merge if
+needed).
 
     $ cd $HOME/src/sinatra-mvc
     $ hg pull
@@ -362,12 +363,12 @@ Some sidemarks with this selection of templating solutions:
   for now.
 
 Normally, you have to do weird stuff in Sinatra like using
-`:'directory/my_view.erubis'` for rendering views in sub directories. Sinatra
-MVC has added automatic view prefixes. The former method of using hardcoded
-prefixes still works, but now there's URI-based mapping as well. In short,
-it uses the views from the directory path in the view directory if that
-path matches the URI prefix. For example, if you have a controller like
-this:
+`:'directory/my_view.erubis'` for rendering views in sub directories.
+Sinatra MVC has added automatic view prefixes. The former method of using
+hardcoded prefixes still works, but now there's URI-based mapping as well.
+In short, it uses the views from the directory path in the view directory
+if that path matches the URI prefix. For example, if you have a controller
+like this:
 
     get '/my/little/pony/pink'
       erubis :pink
@@ -439,8 +440,8 @@ defined in your `models` directory. If you just want to migrate your models
 
 This will only update the tables in such a way it can't modify any of the
 data already present. To do that, you'll have to write migrations. This
-functionality is lacking at the moment. Datamapper is able to run migrations,
-but nobody bothered documenting how they work.
+functionality is lacking at the moment. Datamapper is able to run
+migrations, but nobody bothered documenting how they work.
 
 Internationalisation
 --------------------
@@ -463,6 +464,55 @@ To run a script, simply call:
 
     $ cd my_project
     $ sinatra-mvc <scriptname without .rb>
+
+Tests
+-----
+
+Since version 0.0.4 tests are intergrated into Sinatra MVC. If you
+value stability in an application, tests are an awesome way to meet that
+goal. [`Rack::Test`][18] is used to define and run tests on your
+application.
+
+The Sinatra DSL is augmented by a test function. This fuction works as a
+skeleton to house your tests. This function also tracks your test coverage.
+When testing, the output will tell you if you've covered all your code
+with tests. The method it uses is reading the defined controller paths, and
+matching that with the defined tests. It's recommended to define the tests
+in the same file as the actual code. If you don't like this approach for
+what ever reason, a separate `app/tests` directory will do as well.
+
+Here's an example:
+
+  get '/horse/:name' do |name|
+    "Hello horsey! Hello #{h name}!"
+  end
+
+  test '/horse/:name' do
+    def test_horse_name
+      get '/horse/pwny'
+      assert last_response.body == 'Hello horsey! Hello pwny!'
+    end
+  end
+
+Within the `test '/path' do ... end` body you can use all of the Rack::Test
+functionality you normally use in standard tests. The same gotchas apply
+here. All of the test functions have to have the `test_` prefix. Test
+functions should be unique. All of the Sinatra MVC test function bodies
+share a single scope.
+
+At the moment automatic test coverage reporting does not understand the
+difference between HTTP methods. You'll have to make sure to test all of
+the methods that use the same path yourself. In the future Sinatra MVC
+will track your `Rack::Test` usage as well, to provide a complete test
+coverage report.
+
+Running the tests is easy. Just run:
+
+  $ cd ~/src/my_project
+  $ sinatra-mvc test
+
+The `--verbose` flag shows more information about the running tests. All
+the `Rack::Test` command line flags are also supported and used.
 
 Single Character Reserved Variables
 -----------------------------------
@@ -490,3 +540,4 @@ Just don't use these as variables within controllers and views, mkay?
 [15]: http://www.sinatrarb.com/configuration.html
 [16]: http://r18n.rubyforge.org/sinatra.html
 [17]: http://gembundler.com/man/gemfile.5.html
+[18]: http://TODO
