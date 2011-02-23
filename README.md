@@ -483,16 +483,16 @@ what ever reason, a separate `app/tests` directory will do as well.
 
 Here's an example:
 
-  get '/horse/:name' do |name|
-    "Hello horsey! Hello #{h name}!"
-  end
-
-  test '/horse/:name' do
-    def test_horse_name
-      get '/horse/pwny'
-      assert last_response.body == 'Hello horsey! Hello pwny!'
+    get '/horse/:name' do |name|
+      "Hello horsey! Hello #{h name}!"
     end
-  end
+    
+    test '/horse/:name' do
+      def test_horse_name
+        get '/horse/pwny'
+        assert last_response.body == 'Hello horsey! Hello pwny!'
+      end
+    end
 
 Within the `test '/path' do ... end` body you can use all of the Rack::Test
 functionality you normally use in standard tests. The same gotchas apply
@@ -508,8 +508,8 @@ coverage report.
 
 Running the tests is easy. Just run:
 
-  $ cd ~/src/my_project
-  $ sinatra-mvc test
+    $ cd ~/src/my_project
+    $ sinatra-mvc test
 
 The `--verbose` flag shows more information about the running tests. All
 the `Rack::Test` command line flags are also supported and used.
