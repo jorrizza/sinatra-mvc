@@ -490,7 +490,7 @@ Here's an example:
     test '/horse/:name' do
       def test_horse_name
         get '/horse/pwny'
-        assert last_response.body == 'Hello horsey! Hello pwny!'
+        assert_equal last_response.body, 'Hello horsey! Hello pwny!'
       end
     end
 
